@@ -1,16 +1,24 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { injectGlobal } from 'styled-components';
+
+import Home from './scenes/Home';
 
 import { data } from "./data/capitalsData";
 
+injectGlobal`
+  body {
+    margin: 0px;
+    padding: 0px;
+    font-size: 16px;
+  }
+`;
+
 class App extends React.Component {
   render() {
-    return data.map((country, index) => (
-      <div key={index}>
-        <h2>{country.country}</h2>
-        <small>{country.capital}</small>
-      </div>
-    ));
+    return <div>
+      <Home />
+    </div>;
   }
 }
 
