@@ -5,12 +5,16 @@ import { injectGlobal } from 'styled-components';
 import Home from './scenes/Home';
 
 import { data } from "./data/capitalsData";
+import { defaultColorText } from './constants/colors';
 
 injectGlobal`
+  @import url('https://fonts.googleapis.com/css?family=Roboto');
   body {
     margin: 0px;
     padding: 0px;
     font-size: 16px;
+    color: ${defaultColorText};
+    font-family: 'Roboto', sans-serif;
   }
 `;
 

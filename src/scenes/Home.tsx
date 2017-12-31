@@ -9,6 +9,7 @@ const HomeWrapper = styled.div`
   height: 100vh;
   background-color: ${backgroundHome};
   text-align: center;
+  padding-top: 5em;
 `;
 
 const H1 = styled.h1`
