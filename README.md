@@ -3,5 +3,5 @@ Game for learning the world's capitals.
 
 ## Tech Stack
 - Typescript
-- StyleComponents
+- StyledComponents
 - React
