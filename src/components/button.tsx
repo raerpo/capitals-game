@@ -21,10 +21,11 @@ const ButtonWrapper = styled.button`
 
 interface ButtonProps {
   text: string
+  onClick: () => void
 }
 
 const Button = (props: ButtonProps) => {
-  return <ButtonWrapper>
+  return <ButtonWrapper onClick={props.onClick} >
     { props.text }
   </ButtonWrapper>
 }

@@ -14,13 +14,18 @@ const HomeWrapper = styled.div`
 
 const H1 = styled.h1`
   margin: 0px;
+  margin-bottom: 2em;
 `
 
-const Home = () => {
+interface homeProps {
+  handleStartPlaying: () => void
+}
+
+const Home = (props: homeProps) => {
   return (
     <HomeWrapper>
       <H1>Do you know the world's capitals?</H1>
-      <Button text="prove it" />
+      <Button text="prove it" onClick={props.handleStartPlaying} />
     </HomeWrapper>
   );
 };
