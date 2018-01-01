@@ -5,8 +5,10 @@ import { injectGlobal } from "styled-components";
 import Home from "./scenes/Home";
 import Game from "./scenes/Game";
 
+import { getRandomItems } from './utils/random';
+
 import { data as countries } from "./data/capitalsData";
-import { defaultColorText } from "./constants/colors";
+import { defaultColorText, capitalsColors } from "./constants/colors";
 
 injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=Roboto');
@@ -18,6 +20,11 @@ injectGlobal`
     font-family: 'Roboto', sans-serif;
   }
 `;
+
+interface countryData {
+  country: string,
+  capital: string
+}
 
 class App extends React.Component {
   state = {
@@ -32,19 +39,14 @@ class App extends React.Component {
     this.setState({
       playing: true,
       capital,
-      rightCountry,
-      wrongCountry
+      rightCountry: rightCountry.country,
+      wrongCountry: wrongCountry.country
     });
   };
   // Change the capital, rightCountry and wrongCountry in the state
   getNewRound = () => {
-    let randomIndex: number = Math.floor(Math.random() * countries.length);
-    const capital = countries[randomIndex].capital;
-    const rightCountry = countries[randomIndex].country;
-    // New country
-    // @TODO: Make sure that the new country is different than the right country
-    randomIndex = Math.floor(Math.random() * countries.length);
-    const wrongCountry = countries[randomIndex].country;
+    const [ rightCountry, wrongCountry ] = getRandomItems(countries, 2) as [countryData, countryData];
+    const capital = rightCountry.capital;
     return {
       capital,
       rightCountry,
@@ -53,11 +55,12 @@ class App extends React.Component {
   };
   render() {
     const { playing, capital, rightCountry, wrongCountry } = this.state;
+    const backgroundColors = getRandomItems(capitalsColors, 2) as [string, string];
     return (
       <div>
         {this.state.playing ? (
           <Game
-            colors={["yellow", "green"]}
+            colors={backgroundColors}
             capital={capital}
             rightCountry={rightCountry}
             wrongCountry={wrongCountry}

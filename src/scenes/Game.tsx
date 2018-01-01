@@ -9,10 +9,9 @@ interface gameProps {
 }
 
 const GameWrapper = styled.div`
-  width: 100vw;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 50% 50%;
 `;
 
 const Country = styled.div`
