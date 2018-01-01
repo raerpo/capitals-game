@@ -9,6 +9,10 @@ interface gameProps {
 }
 
 const GameWrapper = styled.div`
+  position: relative;
+`;
+
+const CountriesWrapper = styled.div`
   height: 100vh;
   display: grid;
   grid-template-columns: 50% 50%;
@@ -18,12 +22,27 @@ const Country = styled.div`
   background-color: ${props => (props.color ? props.color : "white")};
 `;
 
+const Capital = styled.div`
+  width: 20vw;
+  height: 20vw;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  margin-left: calc(50% - 10vw);
+  text-align: center;
+  color: black;
+  margin-top: calc(50vh - 10vw);
+`;
+
 const Game = (props: gameProps) => {
   const { colors, capital, rightCountry, wrongCountry } = props;
   return (
     <GameWrapper>
-      <Country color={colors[0]}>{rightCountry}</Country>
-      <Country color={colors[1]}>{wrongCountry}</Country>
+      <Capital>{capital}</Capital>
+      <CountriesWrapper>
+        <Country color={colors[0]}>{rightCountry}</Country>
+        <Country color={colors[1]}>{wrongCountry}</Country>
+      </CountriesWrapper>
     </GameWrapper>
   );
 };
