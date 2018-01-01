@@ -70,12 +70,13 @@ const Capital = styled.div`
 
 const Game = (props: gameProps) => {
   const { colors, capital, rightCountry, wrongCountry } = props;
+  const coinFlipOrder = Math.random();
   return (
     <GameWrapper>
       <Capital><p>From which country is <br /> {capital} <br /> the capital?</p></Capital>
       <CountriesWrapper>
-        <Country color={colors[0]}><p>{rightCountry}</p></Country>
-        <Country color={colors[1]}><p>{wrongCountry}</p></Country>
+        <Country color={colors[0]}><p>{coinFlipOrder > 0.5 ? rightCountry : wrongCountry}</p></Country>
+        <Country color={colors[1]}><p>{coinFlipOrder > 0.5 ? wrongCountry : rightCountry}</p></Country>
       </CountriesWrapper>
     </GameWrapper>
   );
