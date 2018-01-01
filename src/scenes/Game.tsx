@@ -15,7 +15,7 @@ const GameWrapper = styled.div`
 const CountriesWrapper = styled.div`
   height: 100vh;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
 `;
 
 const Country = styled.div`
