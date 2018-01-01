@@ -31,7 +31,8 @@ class App extends React.Component {
     playing: false,
     capital: "",
     rightCountry: "",
-    wrongCountry: ""
+    wrongCountry: "",
+    score: 0
   };
   // Change between home page and the game
   handleStartPlaying = () => {
@@ -54,7 +55,7 @@ class App extends React.Component {
     };
   };
   render() {
-    const { playing, capital, rightCountry, wrongCountry } = this.state;
+    const { playing, capital, rightCountry, wrongCountry, score } = this.state;
     const backgroundColors = getRandomItems(capitalsColors, 2) as [string, string];
     return (
       <div>
@@ -64,6 +65,7 @@ class App extends React.Component {
             capital={capital}
             rightCountry={rightCountry}
             wrongCountry={wrongCountry}
+            score={score}
           />
         ) : (
           <Home handleStartPlaying={this.handleStartPlaying} />

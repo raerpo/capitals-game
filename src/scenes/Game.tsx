@@ -6,6 +6,7 @@ interface gameProps {
   capital: string;
   rightCountry: string;
   wrongCountry: string;
+  score: number;
 }
 
 const GameWrapper = styled.div`
@@ -68,11 +69,19 @@ const Capital = styled.div`
   }
 `;
 
+const Score = styled.div`
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  font-size: 2em;
+`;
+
 const Game = (props: gameProps) => {
-  const { colors, capital, rightCountry, wrongCountry } = props;
+  const { colors, capital, rightCountry, wrongCountry, score } = props;
   const coinFlipOrder = Math.random();
   return (
     <GameWrapper>
+      <Score>Score: { score }</Score>
       <Capital><p>From which country is <br /> {capital} <br /> the capital?</p></Capital>
       <CountriesWrapper>
         <Country color={colors[0]}><p>{coinFlipOrder > 0.5 ? rightCountry : wrongCountry}</p></Country>
