@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc && npm run webpack",
+    "start": "tsc && concurrently \"tsc -w\" \"webpack -w\"",
     "production": "tsc && webpack -p",
     "webpack": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,6 +15,7 @@
   "devDependencies": {
     "@types/react": "^16.0.31",
     "@types/react-dom": "^16.0.3",
+    "concurrently": "^3.5.1",
     "typescript": "^2.6.2",
     "webpack": "^3.10.0"
   },
