@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && concurrently \"tsc -w\" \"webpack -w\"",
+    "start": "tsc && concurrently \"tsc -w\" \"webpack-dev-server --open --content-base ./public\"",
     "production": "tsc && webpack -p",
     "webpack": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,7 +17,8 @@
     "@types/react-dom": "^16.0.3",
     "concurrently": "^3.5.1",
     "typescript": "^2.6.2",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
   },
   "dependencies": {
     "react": "^16.2.0",
