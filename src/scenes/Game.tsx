@@ -105,6 +105,23 @@ const Score = styled.div`
   }
 `;
 
+const GithubLink = styled.a`
+  background: url(github-logo.png) no-repeat;
+  background-size: contain;
+  width: 2em;
+  height: 2em;
+  position: absolute;
+  left: 1em;
+  bottom: 1em;
+  font-size: 2em;
+  @media (max-width: 1024px) { 
+    left: .5em;
+    bottom: .5em;
+    width: 1.5em;
+    height: 1.5em;
+  }
+`
+
 const Game = (props: gameProps) => {
   const { colors, capital, rightCountry, wrongCountry, score, handleRightCountrySelection, handleWrongCountrySelection } = props;
   const coinFlipOrder = Math.random();
@@ -122,6 +139,7 @@ const Game = (props: gameProps) => {
         {coinFlipOrder > 0.5 ? rightCountryComponent : wrongCountryComponent}
         {coinFlipOrder > 0.5 ? wrongCountryComponent : rightCountryComponent}
       </CountriesWrapper>
+      <GithubLink href="https://github.com/raerpo/capitals-game" />
     </GameWrapper>
   );
 };
