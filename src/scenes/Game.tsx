@@ -7,6 +7,8 @@ interface gameProps {
   rightCountry: string;
   wrongCountry: string;
   score: number;
+  handleRightCountrySelection: () => void;
+  handleWrongCountrySelection: () => void;
 }
 
 const GameWrapper = styled.div`
@@ -25,7 +27,7 @@ const Country = styled.div`
   overflow: hidden;
   &:hover {
     & > p:before {
-      transform: scale(10);
+      transform: scale(1.5);
     }
   }
   & > p {
@@ -60,7 +62,6 @@ const Capital = styled.div`
   text-align: center;
   margin-top: calc(50vh - 10vw);
   & > p {
-    text-shadow: 0 3px 0 rgba(1,1,1,0.1);
     margin: 0px;
     margin-top: 6rem;
     padding: 1em;
@@ -77,15 +78,21 @@ const Score = styled.div`
 `;
 
 const Game = (props: gameProps) => {
-  const { colors, capital, rightCountry, wrongCountry, score } = props;
+  const { colors, capital, rightCountry, wrongCountry, score, handleRightCountrySelection, handleWrongCountrySelection } = props;
   const coinFlipOrder = Math.random();
+  const rightCountryComponent = <Country color={colors[0]} onClick={handleRightCountrySelection}>
+    <p>{rightCountry}</p>
+  </Country>;
+  const wrongCountryComponent = <Country color={colors[1]} onClick={handleWrongCountrySelection}>
+    <p>{wrongCountry}</p>
+  </Country>;
   return (
     <GameWrapper>
       <Score>Score: { score }</Score>
       <Capital><p>From which country is <br /> {capital} <br /> the capital?</p></Capital>
       <CountriesWrapper>
-        <Country color={colors[0]}><p>{coinFlipOrder > 0.5 ? rightCountry : wrongCountry}</p></Country>
-        <Country color={colors[1]}><p>{coinFlipOrder > 0.5 ? wrongCountry : rightCountry}</p></Country>
+        {coinFlipOrder > 0.5 ? rightCountryComponent : wrongCountryComponent}
+        {coinFlipOrder > 0.5 ? wrongCountryComponent : rightCountryComponent}
       </CountriesWrapper>
     </GameWrapper>
   );

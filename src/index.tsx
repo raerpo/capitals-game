@@ -26,8 +26,16 @@ interface countryData {
   capital: string
 }
 
+interface appState {
+  playing: boolean,
+  capital: string,
+  rightCountry: string,
+  wrongCountry: string,
+  score: number
+}
+
 class App extends React.Component {
-  state = {
+  state: appState = {
     playing: false,
     capital: "",
     rightCountry: "",
@@ -54,6 +62,20 @@ class App extends React.Component {
       wrongCountry
     };
   };
+  handleRightCountrySelection = () => {
+    const newRoundData = this.getNewRound();
+    const newState: appState = {
+      ...this.state,
+      score: this.state.score + 1,
+      capital: newRoundData.capital,
+      rightCountry: newRoundData.rightCountry.country,
+      wrongCountry: newRoundData.wrongCountry.country
+    };
+    this.setState(newState);
+  }
+  handleWrongCountrySelection = () => {
+    alert('stupid!!!');
+  }
   render() {
     const { playing, capital, rightCountry, wrongCountry, score } = this.state;
     const backgroundColors = getRandomItems(capitalsColors, 2) as [string, string];
@@ -65,6 +87,8 @@ class App extends React.Component {
             capital={capital}
             rightCountry={rightCountry}
             wrongCountry={wrongCountry}
+            handleRightCountrySelection={this.handleRightCountrySelection}
+            handleWrongCountrySelection={this.handleWrongCountrySelection}
             score={score}
           />
         ) : (
