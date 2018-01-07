@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"webpack-dev-server --open --content-base ./public\"",
-    "production": "tsc && webpack -p",
+    "build": "tsc && webpack -p",
     "webpack": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
