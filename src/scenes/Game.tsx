@@ -19,6 +19,10 @@ const CountriesWrapper = styled.div`
   height: 100vh;
   display: grid;
   grid-template-columns: 50% 50%;
+  @media (max-width: 1024px) {
+    grid-template-columns: 100%;
+    grid-template-rows: 50% 50%;
+  }
 `;
 
 const Country = styled.div`
@@ -50,6 +54,15 @@ const Country = styled.div`
       transition: all .3s ease-in-out;
     }
   }
+  @media (max-width: 1024px) {
+    display: flex;
+    align-items: center;
+    & > p {
+      margin-top: 0px;
+      font-size: 3rem;
+      max-width: 90%;
+    }
+  }
 `;
 
 const Capital = styled.div`
@@ -68,6 +81,16 @@ const Capital = styled.div`
     font-size: 1.5em;
     color: black;
   }
+  @media (max-width: 1024px) {
+    border-radius: 0px;
+    width: 100%;
+    height: 20vh;
+    margin-top: calc(50vh - 10vh);
+    margin-left: 0px;
+    & > p {
+      margin-top: 0px;
+    }
+  }
 `;
 
 const Score = styled.div`
@@ -75,6 +98,11 @@ const Score = styled.div`
   right: 1em;
   top: 1em;
   font-size: 2em;
+  @media (max-width: 1024px) { 
+    right: .5em;
+    top: .5em;
+    font-size: 1.5em;
+  }
 `;
 
 const Game = (props: gameProps) => {
