@@ -1,21 +1,10 @@
-import * as React from "react";
 import styled from "styled-components";
 
-interface gameProps {
-  colors: [string, string];
-  capital: string;
-  rightCountry: string;
-  wrongCountry: string;
-  score: number;
-  handleRightCountrySelection: () => void;
-  handleWrongCountrySelection: () => void;
-}
-
-const GameWrapper = styled.div`
+export const GameWrapper = styled.div`
   position: relative;
 `;
 
-const CountriesWrapper = styled.div`
+export const CountriesWrapper = styled.div`
   height: 100vh;
   display: grid;
   grid-template-columns: 50% 50%;
@@ -25,7 +14,7 @@ const CountriesWrapper = styled.div`
   }
 `;
 
-const Country = styled.div`
+export const Country = styled.div`
   background-color: ${props => (props.color ? props.color : "white")};
   cursor: pointer;
   overflow: hidden;
@@ -65,7 +54,7 @@ const Country = styled.div`
   }
 `;
 
-const Capital = styled.div`
+export const Capital = styled.div`
   width: 20vw;
   height: 20vw;
   border-radius: 50%;
@@ -93,7 +82,7 @@ const Capital = styled.div`
   }
 `;
 
-const Score = styled.div`
+export const Score = styled.div`
   position: absolute;
   right: 1em;
   top: 1em;
@@ -105,7 +94,7 @@ const Score = styled.div`
   }
 `;
 
-const GithubLink = styled.a`
+export const GithubLink = styled.a`
   background: url(github-logo.png) no-repeat;
   background-size: contain;
   width: 2em;
@@ -121,27 +110,3 @@ const GithubLink = styled.a`
     height: 1.5em;
   }
 `
-
-const Game = (props: gameProps) => {
-  const { colors, capital, rightCountry, wrongCountry, score, handleRightCountrySelection, handleWrongCountrySelection } = props;
-  const coinFlipOrder = Math.random();
-  const rightCountryComponent = <Country color={colors[0]} onClick={handleRightCountrySelection}>
-    <p>{rightCountry}</p>
-  </Country>;
-  const wrongCountryComponent = <Country color={colors[1]} onClick={handleWrongCountrySelection}>
-    <p>{wrongCountry}</p>
-  </Country>;
-  return (
-    <GameWrapper>
-      <Score>Score: { score }</Score>
-      <Capital><p>From which country is <br /> {capital} <br /> the capital?</p></Capital>
-      <CountriesWrapper>
-        {coinFlipOrder > 0.5 ? rightCountryComponent : wrongCountryComponent}
-        {coinFlipOrder > 0.5 ? wrongCountryComponent : rightCountryComponent}
-      </CountriesWrapper>
-      <GithubLink href="https://github.com/raerpo/capitals-game" />
-    </GameWrapper>
-  );
-};
-
-export default Game;
