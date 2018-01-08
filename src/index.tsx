@@ -74,7 +74,18 @@ class App extends React.Component {
     this.setState(newState);
   }
   handleWrongCountrySelection = () => {
-    alert('stupid!!!');
+    // @TODO: show that the person lost in a most nicer way
+    alert(`You've got ${this.state.score} points... You can do it better.`);
+    // @TODO: this code is almost the same as the one in handleRightCountry method. Must be refactored!
+    const newRoundData = this.getNewRound();
+    const newState: appState = {
+      ...this.state,
+      score: 0,
+      capital: newRoundData.capital,
+      rightCountry: newRoundData.rightCountry.country,
+      wrongCountry: newRoundData.wrongCountry.country
+    };
+    this.setState(newState);
   }
   render() {
     const { playing, capital, rightCountry, wrongCountry, score } = this.state;
